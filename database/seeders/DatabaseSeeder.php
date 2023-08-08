@@ -23,71 +23,93 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $events = 
-        [
+        $events =
             [
-            'name' => "Rapat 1",
-            'topic' => "rapat 1",
-            'leader' => "Bagas",
-            'start_date' => Carbon::tomorrow()
-            ],
-            [
-            'name' => "Rapat 2",
-            'topic' => "rapat 2",
-            'leader' => "Jul",
-            'start_date' => Carbon::yesterday()
-            ],
-            [
-            'name' => "Rapat 1",
-            'topic' => "rapat 1",
-            'leader' => "Bagas",
-            'start_date' => Carbon::tomorrow()
-            ],
-            [
-            'name' => "Rapat 2",
-            'topic' => "rapat 2",
-            'leader' => "Jul",
-            'start_date' => Carbon::yesterday()
-            ]
-        ];
+                [
+                    'name' => "Rapat 1",
+                    'topic' => "rapat 1",
+                    'leader' => "Bagas",
+                    'start_date' => Carbon::tomorrow()
+                ],
+                [
+                    'name' => "Rapat 2",
+                    'topic' => "rapat 2",
+                    'leader' => "Jul",
+                    'start_date' => Carbon::yesterday()
+                ],
+                [
+                    'name' => "Rapat 1",
+                    'topic' => "rapat 1",
+                    'leader' => "Bagas",
+                    'start_date' => Carbon::tomorrow()
+                ],
+                [
+                    'name' => "Rapat 2",
+                    'topic' => "rapat 2",
+                    'leader' => "Jul",
+                    'start_date' => Carbon::yesterday()
+                ]
+            ];
 
-        $attendees = 
-        [
+        $attendees =
             [
-                'event_id' => 1,
-                'name' => "Faiz",
-                'role' => "Ketua"
-            ],
-            [
-                'event_id' => 1,
-                'name' => "Samid",
-                'role' => "Wakil"
-            ],
-            [
-                'event_id' => 1,
-                'name' => "Kin",
-                'role' => "Sekre"
-            ],
-            [
-                'event_id' => 2,
-                'name' => "Samid",
-                'role' => "Ketua"
-            ],
-            [
-                'event_id' => 2,
-                'name' => "Faiz",
-                'role' => "Wakil"
-            ],
-            [
-                'event_id' => 2,
-                'name' => "Kin",
-                'role' => "Bendahara"
-            ]
-        ];
+                [
+                    'event_id' => 1,
+                    'name' => "Faiz",
+                    'role' => "Ketua",
+                    'email' => "faizagit@eveger.com",
+                    'phone' => '085156291294',
+                ],
+                [
+                    'event_id' => 1,
+                    'name' => "Samid",
+                    'role' => "Wakil",
+                    'email' =>
+                    "dimastri@eveger.com",
+                    'phone' => '085156291294',
+
+                ],
+                [
+                    'event_id' => 1,
+                    'name' => "Kinnaras",
+                    'role' => "Sekre",
+                    'email' =>
+                    "kinnaras@eveger.com",
+                    'phone' => '085156291294',
+
+                ],
+                [
+                    'event_id' => 2,
+                    'name' => "Samid",
+                    'role' => "Ketua",
+                    'email' =>
+                    "dimastri@eveger.com",
+                    'phone' => '085156291294',
+
+                ],
+                [
+                    'event_id' => 2,
+                    'name' => "Faiz",
+                    'role' => "Wakil",
+                    'email' =>
+                    "faizagit@eveger.com",
+                    'phone' => '085156291294',
+
+                ],
+                [
+                    'event_id' => 2,
+                    'name' => "Kinnaras",
+                    'role' => "Bendahara",
+                    'email' =>
+                    "kinnaras@eveger.com",
+                    'phone' => '085156291294',
+
+                ]
+            ];
         foreach ($events as $key => $value) {
             Event::create($value);
         }
-        foreach ($attendees as $key => $value){
+        foreach ($attendees as $key => $value) {
             Attendee::create($value);
         }
     }

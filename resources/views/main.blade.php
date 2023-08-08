@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="../assets/vendor/css/core.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <title>Eveger | @yield('title')</title>
+    <link rel="stylesheet" href="{{ asset('assets/vendor/css/core.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
 
 <body>
@@ -32,7 +32,7 @@
                 <div>
 
 
-                    <span class="fs-5 fw-semibold">Events</span>
+                    <span class="fs-4 fw-semibold">Events</span>
                 </div>
             </div>
             <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white scrollbar"
@@ -40,8 +40,10 @@
 
                 <div class="list-group list-group-flush border-bottom scrollarea">
                     @foreach ($events as $event)
-                        <a href="/events/{{ $event->id }}" class="list-group-item list-group-item-action py-3 lh-tight"
-                            aria-current="true">
+                        <a href="/events/{{ $event->id }}"
+                            class="list-group-item list-group-item-action py-3 ps-4 lh-tight {{ Request::url() == url('/events/' . $event->id) ? 'active my-active' : '' }}" aria-current="true">
+                                <div class="{{ Request::url() == url('/events/' . $event->id) ? 'active-block' : '' }}" style=""></div>
+                            
                             <div class="d-flex w-100 align-items-center justify-content-between">
                                 <strong class="mb-1">{{ $event->name }}</strong>
                                 <small class="text-muted">Wed</small>
@@ -49,11 +51,6 @@
                             <div class="col-10 mb-1 small">{{ $event->leader }}</div>
                         </a>
                     @endforeach
-
-
-
-
-
                 </div>
             </div>
         </div>
@@ -62,6 +59,12 @@
 
         </div>
     </div>
+    <script src="{{ asset('assets/vendor/js/feather.js') }}"></script>
+    <script>
+        feather.replace();
+    </script>
 </body>
+
+
 
 </html>

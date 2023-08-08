@@ -16,4 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [EventController::class, 'index']);
 
-Route::get('events/{id}', [EventController::class, 'index']);
+Route::get('/events/{id}', [EventController::class, 'index']);
+
+Route::get('/events/{id}/add', [EventController::class, 'create']);
