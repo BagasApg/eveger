@@ -2,22 +2,22 @@
 
 namespace App\Models;
 
-use App\Models\Attendee;
+use App\Models\Event;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Event extends Model
+class Attendee extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'event_id',
         'name',
-        'topic',
-        'leader',
-        'start_date'
+        'role',
+
     ];
 
-    public function attendees(){
-        return $this->hasMany(Attendee::class);
+    public function event() {
+        return $this->belongsTo(Event::class);
     }
 }

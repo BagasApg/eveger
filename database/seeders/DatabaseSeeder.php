@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Event;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use App\Models\Attendee;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,71 +23,72 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $admin = [
+        $events = 
+        [
             [
-                'name' => "rapat 1",
-                'topic' => "tentang rapat 1",
-                'leader' => "julkipser",
-                'start_date' => Carbon::now()
+            'name' => "Rapat 1",
+            'topic' => "rapat 1",
+            'leader' => "Bagas",
+            'start_date' => Carbon::tomorrow()
             ],
             [
-                'name' => "rapat 2",
-                'topic' => "tentang rapat 2",
-                'leader' => "julkipser",
-                'start_date' => Carbon::now()
+            'name' => "Rapat 2",
+            'topic' => "rapat 2",
+            'leader' => "Jul",
+            'start_date' => Carbon::yesterday()
             ],
             [
-                'name' => "rapat 2",
-                'topic' => "tentang rapat 2",
-                'leader' => "julkipser",
-                'start_date' => Carbon::now()
+            'name' => "Rapat 1",
+            'topic' => "rapat 1",
+            'leader' => "Bagas",
+            'start_date' => Carbon::tomorrow()
             ],
             [
-                'name' => "rapat 2",
-                'topic' => "tentang rapat 2",
-                'leader' => "julkipser",
-                'start_date' => Carbon::now()
-            ],
-            [
-                'name' => "rapat 2",
-                'topic' => "tentang rapat 2",
-                'leader' => "julkipser",
-                'start_date' => Carbon::now()
-            ],
-            [
-                'name' => "rapat 2",
-                'topic' => "tentang rapat 2",
-                'leader' => "julkipser",
-                'start_date' => Carbon::now()
-            ],
-            [
-                'name' => "rapat 2",
-                'topic' => "tentang rapat 2",
-                'leader' => "julkipser",
-                'start_date' => Carbon::now()
-            ],
-            [
-                'name' => "rapat 2",
-                'topic' => "tentang rapat 2",
-                'leader' => "julkipser",
-                'start_date' => Carbon::now()
-            ],
-            [
-                'name' => "rapat 2",
-                'topic' => "tentang rapat 2",
-                'leader' => "julkipser",
-                'start_date' => Carbon::now()
-            ],
-            [
-                'name' => "rapat 2",
-                'topic' => "tentang rapat 2",
-                'leader' => "julkipser",
-                'start_date' => Carbon::now()
-            ],
+            'name' => "Rapat 2",
+            'topic' => "rapat 2",
+            'leader' => "Jul",
+            'start_date' => Carbon::yesterday()
+            ]
         ];
 
-        foreach ($admin as $key => $value) {
+        $attendees = 
+        [
+            [
+                'event_id' => 1,
+                'name' => "Faiz",
+                'role' => "Ketua"
+            ],
+            [
+                'event_id' => 1,
+                'name' => "Samid",
+                'role' => "Wakil"
+            ],
+            [
+                'event_id' => 1,
+                'name' => "Kin",
+                'role' => "Sekre"
+            ],
+            [
+                'event_id' => 2,
+                'name' => "Samid",
+                'role' => "Ketua"
+            ],
+            [
+                'event_id' => 2,
+                'name' => "Faiz",
+                'role' => "Wakil"
+            ],
+            [
+                'event_id' => 2,
+                'name' => "Kin",
+                'role' => "Bendahara"
+            ]
+        ];
+        foreach ($events as $key => $value) {
             Event::create($value);
+        }
+        foreach ($attendees as $key => $value){
+            Attendee::create($value);
         }
     }
 }
