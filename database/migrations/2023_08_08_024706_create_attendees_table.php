@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('name');
             $table->string('role');
             $table->string('email');
-            $table->string('phone');
             $table->timestamps();
 
             $table->foreign('event_id')->references('id')->on('events');

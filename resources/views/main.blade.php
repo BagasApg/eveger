@@ -26,7 +26,7 @@
     <div class="row-bawah d-flex">
 
 
-        <div class="bg-white shadow-sm" style="margin-top: 1px">
+        <div class="bg-white shadow-sm" style="margin-top: 1px; height: 91vh">
             <div
                 class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom sticky-top">
                 <div>
@@ -35,8 +35,8 @@
                     <span class="fs-4 fw-semibold">Events</span>
                 </div>
             </div>
-            <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white scrollbar"
-                style="width: 380px; height:79vh; overflow-y: auto; overflow-x:hidden;">
+            <div class="d-flex flex-column align-items-stretch flex-shrink-0 border-bottom bg-white scrollbar"
+                style="width: 380px;height:70vh; overflow-y: auto; overflow-x:hidden;">
 
                 <div class="list-group list-group-flush border-bottom scrollarea">
                     @foreach ($events as $event)
@@ -46,7 +46,7 @@
                             
                             <div class="d-flex w-100 align-items-center justify-content-between">
                                 <strong class="mb-1">{{ $event->name }}</strong>
-                                <small class="text-muted">Wed</small>
+                                <small class="text-muted">{{ $event->start_date }}</small>
                             </div>
                             <div class="col-10 mb-1 small">{{ $event->leader }}</div>
                         </a>
@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-        <div class="col p-3 ">
+        <div class="col p-4 pb-0">
             @yield('content')
 
         </div>

@@ -13,9 +13,9 @@
         <div class="card w-100">
             <div class="card-body py-3">
                 <h5 style="font-size: 16px" class="m-0 fw-bold">Event Name</h5>
-                <h5 class="fw-normal">Rapat Open Air</h5>
+                <h5 class="fw-normal">{{ $current_event->name }}</h5>
                 <h5 style="font-size: 16px" class="m-0 fw-bold">Event Topic</h5>
-                <h5 class="fw-normal m-0">Rapat Open Air</h5>
+                <h5 class="fw-normal m-0">{{ $current_event->topic }}</h5>
             </div>
         </div>
     </div>
@@ -44,16 +44,15 @@
                         </a>
                     </div>
                 </div>
-                <div class="attendees-table-body" style="height: 33vh;overflow-y: auto; overflow-x:hidden;">
+                <div class="attendees-table-body" style="height: 32vh;overflow-y: auto; overflow-x:hidden;">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th style="width: 7%">#</th>
-                                <th style="width: 33%">Name</th>
-                                <th style="width: 10%">Role</th>
-                                <th style="width: 30%">Email</th>
-                                <th style="width: 10%">Phone</th>
-                                <th class="text-center" style="width: 10%">
+                                <th style="width: 20%">Name</th>
+                                <th style="width: 20%">Role</th>
+                                <th style="width: 35%">Email</th>
+                                <th class="text-center" style="width: 18%">
                                     <i style="width:    16px; height:16px" data-feather="link-2"></i>
                                 </th>
                             </tr>
@@ -62,11 +61,10 @@
                             @foreach ($attendees as $attendee)
                                 <tr>
                                     <th class="py-0" style="width: 7%">{{ $loop->iteration }}</th>
-                                    <td class="py-0" style="width: 33%">{{ $attendee->name }}</td>
-                                    <td class="py-0" style="width: 10%">{{ $attendee->role }}</td>
-                                    <td class="py-0" style="width: 30%">{{ $attendee->email }}</td>
-                                    <td class="py-0" style="width: 10%">{{ $attendee->phone }}</td>
-                                    <td class="py-0" style="width: 10%">
+                                    <td class="py-0" style="width: 20%">{{ $attendee->name }}</td>
+                                    <td class="py-0" style="width: 20%">{{ $attendee->role }}</td>
+                                    <td class="py-0" style="width: 35%">{{ $attendee->email }}</td>
+                                    <td class="py-0" style="width: 18%">
                                         <div class="action-buttons d-flex justify-content-center">
                                             <div class="btn btn-primary">
                                                 <i style="width:    16px; height:16px"data-feather="edit"></i>

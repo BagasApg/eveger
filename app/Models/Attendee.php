@@ -10,11 +10,9 @@ class Attendee extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'event_id',
-        'name',
-        'role',
-
+    protected $guarded = [
+        'id',
+        'timestamps'
     ];
 
     public function event() {

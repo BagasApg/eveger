@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendeeController;
 use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,6 @@ Route::get('/', [EventController::class, 'index']);
 
 Route::get('/events/{id}', [EventController::class, 'index']);
 
-Route::get('/events/{id}/add', [EventController::class, 'create']);
+Route::get('/events/{id}/add', [AttendeeController::class, 'create']);
 
-Route::post('/event')
+Route::post('events/{id}/add', [AttendeeController::class, 'store']);

@@ -48,7 +48,43 @@ class DatabaseSeeder extends Seeder
                     'topic' => "rapat 2",
                     'leader' => "Jul",
                     'start_date' => Carbon::yesterday()
-                ]
+            ],
+            [
+                'name' => "Rapat 2",
+                'topic' => "rapat 2",
+                'leader' => "Jul",
+                'start_date' => Carbon::yesterday()
+            ],
+            [
+                'name' => "Rapat 2",
+                'topic' => "rapat 2",
+                'leader' => "Jul",
+                'start_date' => Carbon::yesterday()
+            ],
+            [
+                'name' => "Rapat 2",
+                'topic' => "rapat 2",
+                'leader' => "Jul",
+                'start_date' => Carbon::yesterday()
+            ],
+            [
+                'name' => "Rapat 2",
+                'topic' => "rapat 2",
+                'leader' => "Jul",
+                'start_date' => Carbon::yesterday()
+            ],
+            [
+                'name' => "Rapat 2",
+                'topic' => "rapat 2",
+                'leader' => "Jul",
+                'start_date' => Carbon::yesterday()
+            ],
+            [
+                'name' => "Rapat 2",
+                'topic' => "rapat 2",
+                'leader' => "Jul",
+                'start_date' => Carbon::yesterday()
+            ]
             ];
 
         $attendees =
@@ -58,7 +94,7 @@ class DatabaseSeeder extends Seeder
                     'name' => "Faiz",
                     'role' => "Ketua",
                     'email' => "faizagit@eveger.com",
-                    'phone' => '085156291294',
+                    
                 ],
                 [
                     'event_id' => 1,
@@ -66,7 +102,7 @@ class DatabaseSeeder extends Seeder
                     'role' => "Wakil",
                     'email' =>
                     "dimastri@eveger.com",
-                    'phone' => '085156291294',
+                    
 
                 ],
                 [
@@ -75,7 +111,7 @@ class DatabaseSeeder extends Seeder
                     'role' => "Sekre",
                     'email' =>
                     "kinnaras@eveger.com",
-                    'phone' => '085156291294',
+                    
 
                 ],
                 [
@@ -84,7 +120,7 @@ class DatabaseSeeder extends Seeder
                     'role' => "Ketua",
                     'email' =>
                     "dimastri@eveger.com",
-                    'phone' => '085156291294',
+                    
 
                 ],
                 [
@@ -93,7 +129,7 @@ class DatabaseSeeder extends Seeder
                     'role' => "Wakil",
                     'email' =>
                     "faizagit@eveger.com",
-                    'phone' => '085156291294',
+                    
 
                 ],
                 [
@@ -102,7 +138,7 @@ class DatabaseSeeder extends Seeder
                     'role' => "Bendahara",
                     'email' =>
                     "kinnaras@eveger.com",
-                    'phone' => '085156291294',
+                    
 
                 ]
             ];

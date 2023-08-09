@@ -17,9 +17,5 @@ class EventController extends Controller
         return view('events', compact(['events', 'attendees','attendees_total','current_event']));
     }
 
-    public function create($id){
-        $events = Event::all();
-        $current_event = Event::find($id);
-        return view('add', compact(['events', 'current_event']));
-    }
+    
 }
