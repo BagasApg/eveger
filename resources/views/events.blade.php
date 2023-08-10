@@ -65,12 +65,12 @@
                                     <td class="py-0" style="width: 20%">{{ $attendee->role }}</td>
                                     <td class="py-0" style="width: 35%">{{ $attendee->email }}</td>
                                     <td class="py-0" style="width: 18%">
-                                        <div class="action-buttons d-flex justify-content-center">
+                                        <div class="action-buttons d-flex justify-content-center m-1 gap-2">
                                             <div class="btn btn-primary">
-                                                <i style="width:    16px; height:16px"data-feather="edit"></i>
+                                                <i style="width:    18px; height:18px"data-feather="edit"></i>
                                             </div>
-                                            <div class="btn btn-primary">
-                                                <i style="width:    16px; height:16px"data-feather="trash-2"></i>
+                                            <div class="btn btn-danger">
+                                                <i style="width:    18px; height:18px"data-feather="trash-2"></i>
                                             </div>
                                         </div>
                                     </td>

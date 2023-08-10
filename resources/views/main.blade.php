@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Eveger | @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/core.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/css/theme-default.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 </head>
 
@@ -41,12 +42,15 @@
                 <div class="list-group list-group-flush border-bottom scrollarea">
                     @foreach ($events as $event)
                         <a href="/events/{{ $event->id }}"
-                            class="list-group-item list-group-item-action py-3 ps-4 lh-tight {{ Request::url() == url('/events/' . $event->id) ? 'active my-active' : '' }}" aria-current="true">
-                                <div class="{{ Request::url() == url('/events/' . $event->id) ? 'active-block' : '' }}" style=""></div>
-                            
+                            class="list-group-item list-group-item-action py-3 ps-4 lh-tight events-list-item {{ Request::url() == url('/events/' . $event->id) ? 'active my-active' : '' }}"
+                            aria-current="true">
+                            <div class="{{ Request::url() == url('/events/' . $event->id) ? 'active-block' : '' }}"
+                                style=""></div>
+
                             <div class="d-flex w-100 align-items-center justify-content-between">
                                 <strong class="mb-1">{{ $event->name }}</strong>
-                                <small class="text-muted">{{ $event->start_date }}</small>
+                                <small
+                                    class="text-muted">{{ $carbon->parse($event->start_date)->format('d/m/Y') }}</small>
                             </div>
                             <div class="col-10 mb-1 small">{{ $event->leader }}</div>
                         </a>

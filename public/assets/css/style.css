@@ -1,15 +1,23 @@
+.events-list-item:hover {
+    background-color: rgb(255, 248, 247) !important;
+}
+
+.events-list-item > .small {
+    color: darkgray;
+}
+
 .back:hover {
     color:salmon;
 }
 
 .my-active {
     background-color: rgba(250, 128, 114, 0.123) !important;
-    color: black !important;
+    color: rgb(218, 69, 53) !important;
 }
 
 .active-block {
     background-color: salmon;
-    width: 8px;
+    width: 9px;
     height: 100%;
     position: absolute;
     top: 0;
@@ -38,6 +46,8 @@
     color: white;
     border: 1px solid transparent;
 }
+
+
 
 .tambah {
     padding-left: 0.9rem;
