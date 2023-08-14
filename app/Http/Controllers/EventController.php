@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\Attendee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
@@ -14,8 +15,10 @@ class EventController extends Controller
         $attendees = Attendee::where('event_id',$id)->get();
         $attendees_total = count($attendees);
         $current_event = Event::find($id);
-        return view('events', compact(['events', 'attendees','attendees_total','current_event']));
+        $carbon = new Carbon();
+        return view('events', compact(['events', 'attendees','attendees_total','current_event', 'carbon']));
     }
 
+    
     
 }

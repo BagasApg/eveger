@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Event;
 use App\Models\Attendee;
 use Illuminate\Http\Request;
@@ -13,7 +14,8 @@ class AttendeeController extends Controller
     {
         $events = Event::all();
         $current_event = Event::find($id);
-        return view('add', compact(['events', 'current_event']));
+        $carbon = new Carbon();
+        return view('add', compact(['events', 'current_event','carbon']));
     }
 
     public function store(Request $request)
@@ -23,12 +25,20 @@ class AttendeeController extends Controller
             // 'event_id' => 'required',
             'name' => 'required',
             'role' => 'required',
-            'email' => 'required',
-            'phone' => 'required'
+            'email' => 'required'
         ]);
 
         Attendee::create($request->all());
         return redirect('events/'. $request->event_id)
             ->with('success', 'Attendee added!');
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        // dd($id);
+        Attendee::find($id)->delete();
+
+        return redirect('events/'. $request->event_id)
+                ->with('success', "Attendee deleted!");
     }
 }

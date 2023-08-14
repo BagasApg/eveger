@@ -1,3 +1,26 @@
+@font-face {
+    font-family: cgothic;
+    src: url('../vendor/fonts/cgothic.ttf'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: cgothicbold;
+    src: url('../vendor/fonts/cgothicbold.TTF'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    font-family: cgothic;
+}
+
+.centurygothic-bold {
+    font-family: cgothicbold !important;
+}
+
 .back:hover {
     color:salmon;
 }
@@ -8,8 +31,8 @@
 }
 
 .active-block {
-    background-color: salmon;
-    width: 8px;
+    background-color: rgb(255, 82, 63);
+    width: 9px;
     height: 100%;
     position: absolute;
     top: 0;
@@ -60,12 +83,16 @@
     width: 10px;
 }
 .scrollbar::-webkit-scrollbar-track {
-    border-radius: 8px;
+    /* border-radius: 0px; */
     background-color: #e7e7e7;
-    border: 1px solid #cacaca;
+    /* border: 1px solid #cacaca; */
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
     border-radius: 8px;
-    background-color: grey;
+    background-color: rgb(218, 218, 218);
+}
+
+.active-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgb(172, 172, 172);
 }

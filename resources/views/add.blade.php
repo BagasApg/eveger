@@ -22,12 +22,12 @@
             {{ csrf_field() }}
             <div class="m-4">
                 <input type="hidden" name="event_id" value="{{ $current_event->id }}">
-                <h4>Add Attendee</h4>
+                <h4 class="centurygothic-bold">Add Attendee</h4>
                 
                 <div class="row">
                     <div class="col-md-6">
                         <div class="">
-                            <label for="defaultFormControlInput" class="form-label">Name</label>
+                            <label for="defaultFormControlInput" class="form-label centurygothic-bold">Name</label>
                             <input type="text" class="form-control" id="defaultFormControlInput"
                                 placeholder="Bagas Arianto" aria-describedby="defaultFormControlHelp" name="name"/>
                             <div id="defaultFormControlHelp" class="form-text">
@@ -37,10 +37,11 @@
 
                     </div>
                     <div class="col-md-6">
+                        
                         <div>
-                            <label for="defaultFormControlInput" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="defaultFormControlInput"
-                                placeholder="bagas.arianto@eveger.com" aria-describedby="defaultFormControlHelp" name="email"/>
+                            <label for="defaultFormControlInput" class="form-label centurygothic-bold">Role</label>
+                            <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Host"
+                                aria-describedby="defaultFormControlHelp" name="role"/>
                             <div id="defaultFormControlHelp" class="form-text">
                             </div>
                         </div>
@@ -49,26 +50,16 @@
 
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
-
+                    <div class="col-md">
                         <div>
-                            <label for="defaultFormControlInput" class="form-label">Role</label>
-                            <input type="text" class="form-control" id="defaultFormControlInput" placeholder="Host"
-                                aria-describedby="defaultFormControlHelp" name="role"/>
+                            <label for="defaultFormControlInput" class="form-label centurygothic-bold">Email</label>
+                            <input type="email" class="form-control" id="defaultFormControlInput"
+                                placeholder="bagas.arianto@eveger.com" aria-describedby="defaultFormControlHelp" name="email"/>
                             <div id="defaultFormControlHelp" class="form-text">
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-
-                        <div>
-                            <label for="defaultFormControlInput" class="form-label">Phone</label>
-                            <input type="text" class="form-control" id="defaultFormControlInput"
-                                placeholder="08XXXXXXXXX" aria-describedby="defaultFormControlHelp" name="phone"/>
-                            <div id="defaultFormControlHelp" class="form-text">
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
                 <div class="mt-3 add-button">
                     <input type="submit" class="btn btn-success">
