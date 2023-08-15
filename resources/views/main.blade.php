@@ -33,7 +33,7 @@
         </nav>
     </div>
     <div class="row-bawah d-flex">
-        <div class=" bg-white shadow-sm events-sidebar" style="width:25vw;margin-top: 1px; height: 91vh">
+        <div class=" bg-white shadow-sm events-sidebar" style="width:25vw;margin-top: 1px; height: 91vh; border-radius: 0 0 0.5rem">
             <div
                 class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom sticky-top">
                 <div>
@@ -67,10 +67,13 @@
                     @endforeach
                 </div>
             </div>
+            <div class="p-2">
+                Hi
+            </div>
+        
         </div>
-        <script>
-            toastr.info('halo');
-        </script>
+
+        
         <div class="col p-4 pb-0 pt-3">
             @yield('content')
 

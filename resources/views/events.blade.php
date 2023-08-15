@@ -93,7 +93,16 @@
                         </tbody>
                     </table>
                 </div>
+                @if (Session::has('success'))
+                    <script>
+                        toastr.success('Attendee added successfully!');
+                    </script>
+                @elseif(Session::has('deleted'))
+                    <script>
+                        toastr.success('Attendee deleted successfully!');
+                    </script>
 
+                @endif
 
 
             </div>

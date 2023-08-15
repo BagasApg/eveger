@@ -23,8 +23,8 @@ class AttendeeController extends Controller
         
         $request->validate([
             // 'event_id' => 'required',
-            'name' => 'required',
-            'role' => 'required',
+            'name' => 'required|max:255',
+            'role' => 'required|max:255',
             'email' => 'required'
         ]);
 
@@ -32,15 +32,15 @@ class AttendeeController extends Controller
 
 
         return redirect('events/'. $request->event_id)
-            ->with('success', 'Attendee added!');
+            ->with('success', 'Attendee added successfully!');
     }
 
     public function destroy(Request $request, $id)
     {
         // dd($id);
         Attendee::find($id)->delete();
-
+        // dd('masuk');
         return redirect('events/'. $request->event_id)
-                ->with('success', "Attendee deleted!");
+                ->with('deleted', "Attendee deleted!");
     }
 }
