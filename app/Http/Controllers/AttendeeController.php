@@ -14,10 +14,7 @@ class AttendeeController extends Controller
     {
         $events = Event::all();
         $current_event = Event::find($id);
-
         $carbon = new Carbon();
-
-
         return view('add', compact(['events', 'current_event','carbon']));
     }
 
@@ -28,8 +25,7 @@ class AttendeeController extends Controller
             // 'event_id' => 'required',
             'name' => 'required',
             'role' => 'required',
-            'email' => 'required',
-            'phone' => 'required|numeric'
+            'email' => 'required'
         ]);
 
         Attendee::create($request->all());
@@ -37,5 +33,14 @@ class AttendeeController extends Controller
 
         return redirect('events/'. $request->event_id)
             ->with('success', 'Attendee added!');
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        // dd($id);
+        Attendee::find($id)->delete();
+
+        return redirect('events/'. $request->event_id)
+                ->with('success', "Attendee deleted!");
     }
 }

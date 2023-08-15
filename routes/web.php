@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AttendeeController;
 use App\Http\Controllers\EventController;
+use App\Models\Attendee;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,10 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/experimental', function(){
+    return view('basic');
+});
+
 Route::get('/', [EventController::class, 'index']);
 
 Route::get('/events/{id}', [EventController::class, 'index']);
 
 Route::get('/events/{id}/add', [AttendeeController::class, 'create']);
 
-Route::post('events/{id}/add', [AttendeeController::class, 'store']);
+Route::post('/events/{id}/add', [AttendeeController::class, 'store']);
+
+Route::delete('events/{id}/delete', [AttendeeController::class, 'destroy']);

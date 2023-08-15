@@ -15,12 +15,10 @@ class EventController extends Controller
         $attendees = Attendee::where('event_id',$id)->get();
         $attendees_total = count($attendees);
         $current_event = Event::find($id);
-        
         $carbon = new Carbon();
-
-
         return view('events', compact(['events', 'attendees','attendees_total','current_event', 'carbon']));
     }
 
+    
     
 }
