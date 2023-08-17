@@ -23,7 +23,7 @@
     <div class="row shadow-sm m-0">
         <nav class="navbar navbar-expand-lg bg-body-tertiary py-2 bg-white">
             <div class="container-fluid ps-2">
-                <a class="navbar-brand p-0 fs-3 text-black centurygothic-bold" href="#">eveger</a>
+                <a class="navbar-brand p-0 fs-3 text-black centurygothic-bold" href="#">ev<span style="color: rgb(239, 90, 74)">e</span>ger</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

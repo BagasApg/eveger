@@ -61,16 +61,18 @@
                         </thead>
                         <tbody>
                             @foreach ($attendees as $attendee)
-                                <tr>
+                                <tr class="tr-attendees">
                                     <th class="py-0" style="width: 7%">{{ $loop->iteration }}</th>
                                     <td class="py-0" style="width: 20%">{{ $attendee->name }}</td>
                                     <td class="py-0" style="width: 20%">{{ $attendee->role }}</td>
                                     <td class="py-0" style="width: 35%">{{ $attendee->email }}</td>
                                     <td class="py-0" style="width: 18%">
                                         <div class="action-buttons d-flex justify-content-center p-1 gap-1">
-                                            <div class="btn btn-primary btn-sm">
-                                                <i style="width:    18px; height:18px"data-feather="edit"></i>
-                                            </div>
+                                            <a href="/events/{{ $current_event->id  }}/edit/{{ $attendee->id }}">
+                                                <div class="btn btn-primary btn-sm">
+                                                    <i style="width:    18px; height:18px"data-feather="edit"></i>
+                                                </div>
+                                            </a>
                                             <form action="/events/{{ $attendee->id }}/delete" method="POST">
                                                 <input type="hidden" name="event_id" value="{{ $current_event->id }}">
 
@@ -95,12 +97,12 @@
                 </div>
                 @if (Session::has('success'))
                     <script>
-                        toastr.success('Attendee added successfully!');
+                        toastr.success("{!! session('success') !!}");
                     </script>
-                @elseif(Session::has('deleted'))
+                {{-- @elseif(Session::has('deleted'))
                     <script>
                         toastr.success('Attendee deleted successfully!');
-                    </script>
+                    </script> --}}
 
                 @endif
 
