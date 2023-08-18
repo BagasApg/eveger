@@ -18,13 +18,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Debugging
+
 Route::get('/experimental', function(){
     return view('experimental');
 });
 
-Route::get('/', [EventController::class, 'index']);
+// Events
+Route::get('/', [EventController::class, 'dashboard']);
+Route::get('/events', [EventController::class, 'dashboard']);
+Route::get('/events/{id}', [EventController::class, 'index'])->name('events_index');
 
-Route::get('/events/{id}', [EventController::class, 'index']);
+// Events - CRUD
+
+Route::get('/add', [EventController::class, 'create']);
+Route::post('/add', [EventController::class, 'store']);
+
+// Attendees
 
 Route::get('/events/{id}/add', [AttendeeController::class, 'create']);
 
@@ -35,6 +45,8 @@ Route::get('/events/{eventid}/edit/{id}', [AttendeeController::class, 'show']);
 Route::post('/events/{eventid}/edit/{id}', [AttendeeController::class, 'update']);
 
 Route::delete('events/{id}/delete', [AttendeeController::class, 'destroy']);
+
+
 
 // Auth
 Route::get('/login', [LoginController::class, 'index'])->name('login_index');

@@ -13,7 +13,7 @@ class Event extends Model
     protected $fillable = [
         'name',
         'topic',
-        'leader',
+        'creator',
         'start_date'
     ];
 

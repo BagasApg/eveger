@@ -15,7 +15,7 @@ class AttendeeController extends Controller
         $events = Event::all();
         $current_event = Event::find($id);
         $carbon = new Carbon();
-        return view('add', compact(['events', 'current_event','carbon']));
+        return view('attendees.add', compact(['events', 'current_event','carbon']));
     }
 
     public function store(Request $request){
@@ -41,7 +41,7 @@ class AttendeeController extends Controller
         $current_attendee = Attendee::find($id);
         // dd($current_attendee);
         $carbon = new Carbon();
-        return view('edit', compact(['events', 'current_event','current_attendee','carbon']));
+        return view('attendees.edit', compact(['events', 'current_event','current_attendee','carbon']));
     }
 
     public function update(Request $request){

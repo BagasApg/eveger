@@ -28,61 +28,61 @@ class DatabaseSeeder extends Seeder
                 [
                     'name' => "Rapat 1",
                     'topic' => "rapat 1",
-                    'leader' => "Bagas",
+                    'creator' => "Bagas",
                     'start_date' => Carbon::tomorrow()
                 ],
                 [
                     'name' => "Rapat 2",
                     'topic' => "rapat 2",
-                    'leader' => "Jul",
+                    'creator' => "Jul",
                     'start_date' => Carbon::yesterday()
                 ],
                 [
                     'name' => "Rapat 1",
                     'topic' => "rapat 1",
-                    'leader' => "Bagas",
+                    'creator' => "Bagas",
                     'start_date' => Carbon::tomorrow()
                 ],
                 [
                     'name' => "Rapat 2",
                     'topic' => "rapat 2",
-                    'leader' => "Jul",
+                    'creator' => "Jul",
                     'start_date' => Carbon::yesterday()
             ],
             [
                 'name' => "Rapat 2",
                 'topic' => "rapat 2",
-                'leader' => "Jul",
+                'creator' => "Jul",
                 'start_date' => Carbon::yesterday()
             ],
             [
                 'name' => "Rapat 2",
                 'topic' => "rapat 2",
-                'leader' => "Jul",
+                'creator' => "Jul",
                 'start_date' => Carbon::yesterday()
             ],
             [
                 'name' => "Rapat 2",
                 'topic' => "rapat 2",
-                'leader' => "Jul",
+                'creator' => "Jul",
                 'start_date' => Carbon::yesterday()
             ],
             [
                 'name' => "Rapat 2",
                 'topic' => "rapat 2",
-                'leader' => "Jul",
+                'creator' => "Jul",
                 'start_date' => Carbon::yesterday()
             ],
             [
                 'name' => "Rapat 2",
                 'topic' => "rapat 2",
-                'leader' => "Jul",
+                'creator' => "Jul",
                 'start_date' => Carbon::yesterday()
             ],
             [
                 'name' => "Rapat 2",
                 'topic' => "rapat 2",
-                'leader' => "Jul",
+                'creator' => "Jul",
                 'start_date' => Carbon::yesterday()
             ]
             ];
