@@ -23,67 +23,43 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+        $users = [
+            [
+                'username' => 'myadmin',
+                'password' => 'asdasd'
+            ], 
+            [
+                'username' => 'bagasapg',
+                'password' => 'asdasd'
+            ]
+        ];
+
         $events =
             [
-                [
-                    'name' => "Rapat 1",
-                    'topic' => "rapat 1",
-                    'creator' => "Bagas",
-                    'start_date' => Carbon::tomorrow()
-                ],
-                [
-                    'name' => "Rapat 2",
-                    'topic' => "rapat 2",
-                    'creator' => "Jul",
-                    'start_date' => Carbon::yesterday()
-                ],
-                [
-                    'name' => "Rapat 1",
-                    'topic' => "rapat 1",
-                    'creator' => "Bagas",
-                    'start_date' => Carbon::tomorrow()
-                ],
-                [
-                    'name' => "Rapat 2",
-                    'topic' => "rapat 2",
-                    'creator' => "Jul",
-                    'start_date' => Carbon::yesterday()
-            ],
+                
             [
-                'name' => "Rapat 2",
-                'topic' => "rapat 2",
+                'user_id' => 1,
+                'name' => "Rapat 1",
+                'slug' => "rapat-1",
+                'topic' => "rapat 1",
                 'creator' => "Jul",
                 'start_date' => Carbon::yesterday()
             ],
             [
+                'user_id' => 1,
                 'name' => "Rapat 2",
+                'slug' => "rapat-2",
                 'topic' => "rapat 2",
                 'creator' => "Jul",
-                'start_date' => Carbon::yesterday()
+                'start_date' => Carbon::tomorrow()
             ],
             [
-                'name' => "Rapat 2",
-                'topic' => "rapat 2",
+                'user_id' => 1,
+                'name' => "Rapat 3",
+                'slug' => "rapat-3",
+                'topic' => "rapat 3",
                 'creator' => "Jul",
-                'start_date' => Carbon::yesterday()
-            ],
-            [
-                'name' => "Rapat 2",
-                'topic' => "rapat 2",
-                'creator' => "Jul",
-                'start_date' => Carbon::yesterday()
-            ],
-            [
-                'name' => "Rapat 2",
-                'topic' => "rapat 2",
-                'creator' => "Jul",
-                'start_date' => Carbon::yesterday()
-            ],
-            [
-                'name' => "Rapat 2",
-                'topic' => "rapat 2",
-                'creator' => "Jul",
-                'start_date' => Carbon::yesterday()
+                'start_date' => Carbon::now()
             ]
             ];
 
@@ -142,6 +118,9 @@ class DatabaseSeeder extends Seeder
 
                 ]
             ];
+        foreach ($users as $key => $value) {
+            User::create($value);
+        }
         foreach ($events as $key => $value) {
             Event::create($value);
         }

@@ -20,6 +20,8 @@ class RegisterController extends Controller
             'password' => 'required|min:5'
         ]);
 
+        // dd($request->password);
+
         User::create($request->all());
 
         if(Auth::attempt(['username' => $request->username, 'password' => $request->password])){

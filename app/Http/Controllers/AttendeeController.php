@@ -3,17 +3,20 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Event;
 use App\Models\Attendee;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class AttendeeController extends Controller
+class  AttendeeController extends Controller
 {
     // Create
-    public function create($id){
-        $events = Event::all();
-        $current_event = Event::find($id);
+    public function create($slug){
+        $user = User::find(auth()->user()->id);
+
+        $events = Event::where('user_id', $user->id)->get();
+        $current_event = Event::where('slug', $slug)->first();
         $carbon = new Carbon();
         return view('attendees.add', compact(['events', 'current_event','carbon']));
     }
@@ -30,14 +33,16 @@ class AttendeeController extends Controller
         Attendee::create($request->all());
 
 
-        return redirect('events/'. $request->event_id)
+        return redirect('events/'. $request->slug)
             ->with('success', 'Attendee added successfully!');
     }
 
     // Edit
-    public function show($eventid, $id){
-        $events = Event::all();
-        $current_event = Event::find($eventid);
+    public function show($slug, $id){
+        $user = User::find(auth()->user()->id);
+
+        $events = Event::where('user_id', $user->id)->get();
+        $current_event = Event::where('slug', $slug)->first();
         $current_attendee = Attendee::find($id);
         // dd($current_attendee);
         $carbon = new Carbon();
@@ -61,14 +66,16 @@ class AttendeeController extends Controller
                 ]);
 
 
-        return redirect('events/'. $request->event_id)
+        return redirect('events/'. $request->slug)
             ->with('success', 'Attendee edited successfully!');
     }
-    public function destroy(Request $request, $id){
+    public function destroy(Request $request,$slug, $id){
         // dd($id);
+        // Attendee::find($id)->delete();
+        // $event = Event::where('slug', $slug)->first();
         Attendee::find($id)->delete();
         // dd('masuk');
-        return redirect('events/'. $request->event_id)
+        return redirect('events/'. $request->slug)
                 ->with('success', "Attendee deleted!");
     }
 }

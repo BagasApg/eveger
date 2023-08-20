@@ -10,7 +10,7 @@
 
         <div class="p-2 pt-0 ps-1 d-flex justify-content-between">
             <h3 class="mb-1 centurygothic-bold">Event Details</h3>
-            <a href="" class="d-flex align-items-end">Edit Event</a>
+            <a href="/edit/{{ $current_event->slug }}" class="d-flex align-items-end">Edit Event</a>
         </div>
         <div class="card w-100">
             <div class="card-body py-3">
@@ -35,7 +35,7 @@
                 <div class="attendees-table-header pb-3">
                     <div class="d-flex gap-3">
                         <div class="standard-btn attendees-counter rounded-pill">{{ $attendees_total }} Attendees</div>
-                        <a href="/events/{{ $current_event->id }}/add">
+                        <a href="/events/{{ $current_event->slug }}/add">
                             <div class="standard-btn tambah">
                                 <div class="d-flex align-items-center gap-1">
 
@@ -69,12 +69,13 @@
                                     <td class="py-0" style="width: 35%">{{ $attendee->email }}</td>
                                     <td class="py-0" style="width: 18%">
                                         <div class="action-buttons d-flex justify-content-center p-1 gap-1">
-                                            <a href="/events/{{ $current_event->id  }}/edit/{{ $attendee->id }}">
+                                            <a href="/events/{{ $current_event->slug }}/edit/{{ $attendee->id }}">
                                                 <div class="btn btn-primary btn-sm">
                                                     <i style="width:    18px; height:18px"data-feather="edit"></i>
                                                 </div>
                                             </a>
-                                            <form action="/events/{{ $attendee->id }}/delete" method="POST">
+                                            <form action="/events/{{ $current_event->slug }}/delete/ {{ $attendee->id }}"
+                                                method="POST">
                                                 <input type="hidden" name="event_id" value="{{ $current_event->id }}">
 
                                                 <button type="submit" class="p-0"
@@ -100,11 +101,10 @@
                     <script>
                         toastr.success("{!! session('success') !!}");
                     </script>
-                {{-- @elseif(Session::has('deleted'))
+                    {{-- @elseif(Session::has('deleted'))
                     <script>
                         toastr.success('Attendee deleted successfully!');
                     </script> --}}
-
                 @endif
 
 

@@ -5,7 +5,7 @@
 @section('content')
     <div class="m-1 mb-2">
         <div class="d-flex align-items-center">
-            <a href="/events/{{ $current_event->id }}" class="text-decoration-none text-black ">
+            <a href="/events/{{ $current_event->slug }}" class="text-decoration-none text-black ">
                 <div class="d-flex align-items-center back" >
 
 
@@ -17,7 +17,7 @@
 
     </div>
     <div class="card">
-        <form action="/events/{{ $current_event->id }}/add" method="POST">
+        <form action="/events/{{ $current_event->slug }}/add" method="POST">
             {{-- {{ dd("/events/".$current_event->id."/add") }} --}}
             {{ csrf_field() }}
             <div class="m-4">

@@ -49,6 +49,8 @@
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/css/toastr.css') }}">
+
 
     <!-- Page CSS -->
     <!-- Page -->
@@ -59,6 +61,12 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../assets/js/config.js"></script>
+
+    <script src="{{ asset('assets/vendor/js/jquery.js') }}"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="{{ asset('assets/vendor/js/feather.js') }}"></script>
+    <script src="{{ asset('assets/vendor/js/toastr.js') }}"></script>
   </head>
 
   <body>
@@ -81,17 +89,23 @@
               <h4 class="mb-2">Welcome to Eveger</h4>
               <p class="mb-4">Begin your best event managing experience!</p>
 
-              <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+              <form id="formAuthentication" class="mb-3" action="{{ route('login_authenticate') }}" method="POST">
+                @csrf
                 <div class="mb-3">
-                  <label for="email" class="form-label">Username</label>
+                  <label for="username" class="form-label">Username</label>
                   <input
                     type="text"
-                    class="form-control"
-                    id="email"
-                    name="email-username"
-                    placeholder="Enter your email or username"
+                    class="form-control @error('username') is-invalid @enderror"
+                    id="username"
+                    name="username"
+                    placeholder="Enter your username"
                     autofocus
                   />
+                  @error('username')
+    <div class="invalid-feedback">
+                                                      {{ $message }}
+                                                    </div>
+@enderror
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
@@ -102,12 +116,17 @@
                     <input
                       type="password"
                       id="password"
-                      class="form-control"
+                      class="form-control @error('username') is-invalid @enderror"
                       name="password"
                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                       aria-describedby="password"
                     />
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                    @error('password')
+    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                      </div>
+@enderror
                   </div>
                 </div>
                 <div class="mb-3">
@@ -131,28 +150,12 @@
       </div>
     </div>
 
-    <!-- / Content -->
+    @if (Session::has('login_error'))
+<script>
+    toastr.error("{!! session('login_error') !!}");
+</script>
+@endif
 
     
-
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="../assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="../assets/vendor/libs/popper/popper.js"></script>
-    <script src="../assets/vendor/js/bootstrap.js"></script>
-    <script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
-
-    <script src="../assets/vendor/js/menu.js"></script>
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
-
-    <!-- Main JS -->
-    <script src="../assets/js/main.js"></script>
-
-    <!-- Page JS -->
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>

@@ -24,6 +24,10 @@ body {
 .centurygothic-bold {
     font-family: cgothicbold !important;
 }
+.centurygothic {
+    font-family: cgothic !important;
+}
+
 .add-event-button {
     color: black;
     background-color: white;

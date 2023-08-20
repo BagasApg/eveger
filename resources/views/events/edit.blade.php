@@ -1,25 +1,23 @@
 @extends('main')
 
-@section('title', 'Add Event')
+@section('title', 'Edit')
 
 @section('content')
     <div class="m-1 mb-2">
         <div class="d-flex align-items-center">
-            <a href="{{ URL::previous() == 'http://eveger.test/add' ? '/' : URL::previous() }}"
-                class="text-decoration-none sneat-black">
-                {{-- @dd(URL::previous()) --}}
+            <a href="/events/{{ $current_event->slug }}" class="text-decoration-none text-black ">
                 <div class="d-flex align-items-center back">
 
 
                     <i class="back-icon" data-feather="chevron-left"></i>
-                    <p class="m-0 fs-5">Home</p>
+                    <p class="m-0 fs-5">Back</p>
                 </div>
             </a>
         </div>
 
     </div>
     <div class="card">
-        <form action="/add" method="POST">
+        <form action="/events/{{ $current_event->slug }}/edit/{{ $current_event->id }}" method="POST">
             {{-- {{ dd("/events/".$current_event->id."/add") }} --}}
             {{ csrf_field() }}
             <div class="m-4">
@@ -103,49 +101,6 @@
                 </div>
             </div>
         </form>
-        @if (Session::has('error'))
-            <script>
-                toastr.error('{!! session("error") !!}', 'Gagal')
-            </script>
-        @endif
 
-        <script>
-
-
-            const title = document.querySelector('#title');
-            const slug = document.querySelector('#slug');
-
-            title.focus();
-
-            title.addEventListener('keyup', function() {
-                fetch('/add/checkSlug?title=' + title.value)
-                    .then(response => response.json())
-                    .then(data => slug.value = data.slug)
-                if(title.val === ''){
-                    console.log('kosong!')
-                }
-            });
-            title.addEventListener('focusout', function() {
-                fetch('/add/checkSlug?title=' + title.value)
-                    .then(response => response.json())
-                    .then(data => slug.value = data.slug)
-            });
-
-            //  -------------
-
-            // title.addEventListener('focusin', function() {
-            //     slug.value = ''
-            // });
-
-            $(function() {
-                $('input[name="start_date"]').daterangepicker({
-                    singleDatePicker: true,
-                    showDropdowns: true,
-                    drops: 'up',
-                    minYear: 1901,
-                    maxYear: parseInt(moment().format('YYYY'), 10)
-                });
-            });
-        </script>
     </div>
 @endsection

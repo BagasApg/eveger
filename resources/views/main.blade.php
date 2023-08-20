@@ -21,21 +21,38 @@
     <script src="{{ asset('assets/vendor/js/jquery.js') }}"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="{{ asset('assets/vendor/js/bootstrap.js') }}"></script>
     <script src="{{ asset('assets/vendor/js/feather.js') }}"></script>
     <script src="{{ asset('assets/vendor/js/toastr.js') }}"></script>
 </head>
 
 <body>
     <div class="row shadow-sm m-0">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary py-2 bg-white">
+        {{-- <nav class="navbar navbar-expand-lg bg-body-tertiary ">
             <div class="container-fluid ps-2">
+                
                 <a class="navbar-brand p-0 fs-3 text-black centurygothic-bold" href="/">ev<span
                         style="color: rgb(239, 90, 74)">e</span>ger</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                
 
+            </div>
+        </nav> --}}
+        <nav class="navbar navbar-expand-lg bg-body-tertiary py-2 bg-white">
+            <div class="container-fluid ps-2 px-1 d-flex flex-row justify-content-between">
+                <a class="navbar-brand p-0 fs-3 text-black centurygothic-bold" href="/">ev<span
+                        style="color: rgb(239, 90, 74)">e</span>ger</a>
+                <div class="" id="navbarNavDropdown">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a href="/logout" class="dropdown-item">Logout</a></li>
+                            
+                        </ul>
+                    </div>
+                </div>
             </div>
         </nav>
     </div>
@@ -63,15 +80,15 @@
 
                 <div class="list-group list-group-flush border-bottom scrollarea">
                     @foreach ($events as $event)
-                        <a href="/events/{{ $event->id }}"
-                            class=" list-group-item list-group-item-action py-3 ps-4 pb-2 lh-tight {{ request()->is('events/' . $event->id . '*') ? 'my-active' : '' }}"
+                        <a href="/events/{{ $event->slug }}"
+                            class=" list-group-item list-group-item-action py-3 ps-4 pb-2 lh-tight {{ request()->is('events/' . $event->slug . '*') ? 'my-active' : '' }}"
                             aria-current="true">
-                            <div class="{{ request()->is('events/' . $event->id . '*') ? 'active-block' : '' }}"
+                            <div class="{{ request()->is('events/' . $event->slug . '*') ? 'active-block' : '' }}"
                                 style=""></div>
                             <div class="event-detail">
                                 <div class="d-flex flex-column">
                                     <p class="h5 m-0 centurygothic-bold" style="color: rgb(37, 37, 37) !important">
-                                        {{ $event->name }}</p>
+                                        {{ $event->slug }}</p>
                                     <p class="">{{ $event->creator }}</p>
                                 </div>
                             </div>
