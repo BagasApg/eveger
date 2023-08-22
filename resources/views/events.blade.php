@@ -4,9 +4,11 @@
     {{ $current_event->name }}
 @endsection
 
+@section('sidebar-activation')
+@endsection
+
 @section('content')
     <div class="content-header mb-1">
-
 
         <div class="p-2 pt-0 ps-1 d-flex justify-content-between">
             <h3 class="mb-1 centurygothic-bold">Event Details</h3>
@@ -78,7 +80,7 @@
                                                 method="POST">
                                                 <input type="hidden" name="event_id" value="{{ $current_event->id }}">
 
-                                                <button type="submit" class="p-0"
+                                                <button id="delete_attendee" class="p-0"
                                                     style="border: none; background-color: white">
                                                     @csrf
                                                     @method('DELETE')
@@ -106,7 +108,37 @@
                         toastr.success('Attendee deleted successfully!');
                     </script> --}}
                 @endif
+                <script>
+                    document.querySelector('#delete_attendee').addEventListener('submit', function(e) {
+                        var form = this;
+                        console.log(this);
 
+                        e.preventDefault(); // <--- prevent form from submitting
+
+                        Swal.fire({
+                            title: "Are you sure?",
+                            text: "You will not be able to recover this imaginary file!",
+                            icon: "warning",
+                            buttons: [
+                                'No, cancel it!',
+                                'Yes, I am sure!'
+                            ],
+                            dangerMode: true,
+                        }).then(function(isConfirm) {
+                            if (isConfirm) {
+                                swal({
+                                    title: 'Shortlisted!',
+                                    text: 'Candidates are successfully shortlisted!',
+                                    icon: 'success'
+                                }).then(function() {
+                                    form.submit(); // <--- submit form programmatically
+                                });
+                            } else {
+                                swal("Cancelled", "Your imaginary file is safe :)", "error");
+                            }
+                        })
+                    });
+                </script>
 
             </div>
         </div>

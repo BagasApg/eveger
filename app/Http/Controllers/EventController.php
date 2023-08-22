@@ -19,12 +19,13 @@ class EventController extends Controller
 
         $events = Event::where('user_id', $user->id)->get();
         $event = Event::where('slug', $slug)->first();
+        $sidebar_activation = '';
         $attendees = Attendee::where('event_id', $event->id)->get();
         // dd($attendees->attendees()->get());
         $attendees_total = count($attendees);
         $current_event = Event::where('slug', $slug)->first();
         $carbon = new Carbon();
-        return view('events', compact(['events', 'event', 'attendees', 'attendees_total', 'current_event', 'carbon']));
+        return view('events', compact(['events', 'event', 'sidebar_activation', 'attendees', 'attendees_total', 'current_event', 'carbon']));
     }
 
     public function dashboard()
@@ -32,8 +33,10 @@ class EventController extends Controller
         $user = User::find(auth()->user()->id);
 
         $events = Event::where('user_id', $user->id)->get();
+        $sidebar_activation = '/';
+
         $carbon = new Carbon();
-        return view('dashboard', compact(['events', 'carbon']));
+        return view('dashboard', compact(['events','sidebar_activation', 'carbon']));
     }
 
     public function create()
@@ -41,8 +44,9 @@ class EventController extends Controller
         $user = User::find(auth()->user()->id);
 
         $events = Event::where('user_id', $user->id)->get();
+        $sidebar_activation = '/add';
         $carbon = new Carbon();
-        return view('events.add', compact(['events', 'carbon']));
+        return view('events.add', compact(['events','sidebar_activation', 'carbon']));
     }
 
     public function store(Request $request)

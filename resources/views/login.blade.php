@@ -102,9 +102,7 @@
                     autofocus
                   />
                   @error('username')
-    <div class="invalid-feedback">
-                                                      {{ $message }}
-                                                    </div>
+    <div class="invalid-feedback">{{ $message }}</div>
 @enderror
                 </div>
                 <div class="mb-3 form-password-toggle">
@@ -123,9 +121,9 @@
                     />
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                     @error('password')
-    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                      </div>
+                  <div class="invalid-feedback">
+                                                                                            {{ $message }}
+                                                                                          </div>
 @enderror
                   </div>
                 </div>
@@ -150,11 +148,7 @@
       </div>
     </div>
 
-    @if (Session::has('login_error'))
-<script>
-    toastr.error("{!! session('login_error') !!}");
-</script>
-@endif
+    
 
     
   </body>
