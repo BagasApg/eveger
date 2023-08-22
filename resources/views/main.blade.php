@@ -45,7 +45,7 @@
                     <div class="dropdown">
                         <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Dropdown
+                            Welcome, {{ auth()->user()->username }}!
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a href="/logout" class="dropdown-item">Logout</a></li>
