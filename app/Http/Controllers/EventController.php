@@ -65,6 +65,7 @@ class EventController extends Controller
         if ($tes != null) {
             return back()->with('error', 'Slug already exists!');
         }
+        // dd($request->start_date);
 
         $event = new Event;
         $event->user_id = auth()->user()->id;
@@ -86,10 +87,29 @@ class EventController extends Controller
 
         $events = Event::where('user_id', $user->id)->get();
         $current_event = Event::where('slug', $slug)->first();
+        $sidebar_activation = '/edit';
         $carbon = new Carbon();
-        return view('events.edit', compact(['events','current_event', 'carbon']));
+        return view('events.edit', compact(['events','current_event','sidebar_activation', 'carbon']));
     }
+    public function update(Request $request){
+        // dd($request->start_date);
+        $request->validate([
+            'name' => 'required',
+            'slug' => 'required',
+            'topic' => 'nullable',
+            'creator' => 'required',
+            'start_date' => 'date'
+        ]);
 
+        $updated = Event::find($request->id);
+        $updated->name = $request->name;
+        $updated->topic = $request->topic;
+        $updated->creator = $request->creator;
+        $updated->start_date = Carbon::parse($request->start_date);
+        $updated->save();
+        return redirect('/events/' . $request->slug)->with('success', 'Event edited successfully!');
+        
+    }
 
     public function checkSlug(Request $request)
     {

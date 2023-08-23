@@ -78,7 +78,7 @@
                     </div>
                 </div>
                 <div class="d-flex flex-column align-items-stretch flex-shrink-0 border-bottom bg-white scrollbar scrollbar-events"
-                    style="height:70.65vh; overflow-y: auto; overflow-x:hidden;">
+                    style="height:61.25vh; overflow-y: auto; overflow-x:hidden;">
 
                     <div class="list-group list-group-flush border-bottom scrollarea">
                         @foreach ($events as $event)
@@ -90,7 +90,7 @@
                                 <div class="event-detail">
                                     <div class="d-flex flex-column">
                                         <p class="h5 m-0 centurygothic-bold" style="color: rgb(37, 37, 37) !important">
-                                            {{ $event->slug }}</p>
+                                            {{ $event->name }}</p>
                                         <p class="">{{ $event->creator }}</p>
                                     </div>
                                 </div>

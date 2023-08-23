@@ -41,7 +41,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/add', [EventController::class, 'create']);
     Route::post('/add', [EventController::class, 'store']);
 
-    Route::get('/edit/{slug}', [EventController::class, 'show']);
+    Route::get('/events/{slug}/edit', [EventController::class, 'show']);
+    Route::post('/events/{slug}/edit', [EventController::class, 'update']);
 
     // Attendees
 

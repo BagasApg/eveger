@@ -27,7 +27,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Login Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Login to Eveger</title>
 
     <meta name="description" content="" />
 
@@ -82,7 +82,7 @@
               <div class="d-flex pb-4 justify-content-center">
                 <a href="index.html" class="app-brand-link gap-2">
                   
-                  <span class="app-brand-text demo text-body fs-2 fw-bolder centurygothic-bold">eveger</span>
+                  <span class="app-brand-text demo text-body fs-2 fw-bolder centurygothic-bold" style="color: black !important">ev<span style="color: rgb(239, 90, 74)">e</span>ger</span>
                 </a>
               </div>
               <!-- /Logo -->

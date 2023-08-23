@@ -78,7 +78,7 @@
               <div class="d-flex pb-4 justify-content-center">
                 <a href="index.html" class="app-brand-link gap-2">
                   
-                  <span class="app-brand-text demo text-body fs-2 fw-bolder centurygothic-bold">eveger</span>
+                  <span class="app-brand-text demo text-body fs-2 fw-bolder centurygothic-bold" style="color: black !important">ev<span style="color: rgb(239, 90, 74)">e</span>ger</span>
                 </a>
               </div>
               <!-- /Logo -->

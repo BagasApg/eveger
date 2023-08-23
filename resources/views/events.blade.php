@@ -12,7 +12,7 @@
 
         <div class="p-2 pt-0 ps-1 d-flex justify-content-between">
             <h3 class="mb-1 centurygothic-bold">Event Details</h3>
-            <a href="/edit/{{ $current_event->slug }}" class="d-flex align-items-end">Edit Event</a>
+            <a href="/events/{{ $current_event->slug }}/edit" class="d-flex align-items-end">Edit Event</a>
         </div>
         <div class="card w-100">
             <div class="card-body py-3">
@@ -76,12 +76,13 @@
                                                     <i style="width:    18px; height:18px"data-feather="edit"></i>
                                                 </div>
                                             </a>
-                                            <form action="/events/{{ $current_event->slug }}/delete/ {{ $attendee->id }}"
+                                            <form id="delete-form"
+                                                action=""
                                                 method="POST">
                                                 <input type="hidden" name="event_id" value="{{ $current_event->id }}">
 
-                                                <button id="delete_attendee" class="p-0"
-                                                    style="border: none; background-color: white">
+                                                <button type="button" id="delete_attendee" onclick="deleteAttend('/events/{{ $current_event->slug }}/delete/{{ $attendee->id }}')"
+                                                    class="p-0" style="border: none; background-color: white">
                                                     @csrf
                                                     @method('DELETE')
 
@@ -109,35 +110,29 @@
                     </script> --}}
                 @endif
                 <script>
-                    document.querySelector('#delete_attendee').addEventListener('submit', function(e) {
-                        var form = this;
-                        console.log(this);
-
-                        e.preventDefault(); // <--- prevent form from submitting
-
-                        Swal.fire({
-                            title: "Are you sure?",
-                            text: "You will not be able to recover this imaginary file!",
-                            icon: "warning",
-                            buttons: [
-                                'No, cancel it!',
-                                'Yes, I am sure!'
-                            ],
-                            dangerMode: true,
-                        }).then(function(isConfirm) {
-                            if (isConfirm) {
-                                swal({
-                                    title: 'Shortlisted!',
-                                    text: 'Candidates are successfully shortlisted!',
-                                    icon: 'success'
-                                }).then(function() {
-                                    form.submit(); // <--- submit form programmatically
-                                });
-                            } else {
-                                swal("Cancelled", "Your imaginary file is safe :)", "error");
-                            }
-                        })
-                    });
+                    function deleteAttend(url) {
+                        $(document).ready(function() {
+                            Swal.fire({
+                                title: 'Are you sure?',
+                                text: "You won't be able to revert this!",
+                                icon: 'warning',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Yes, delete it!'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    Swal.fire(
+                                        'Deleted!',
+                                        'Your file has been deleted.',
+                                        'success'
+                                    )
+                                    $("#delete-form").attr('action', url);
+                                    $('#delete-form').submit();
+                                }
+                            })
+                        });
+                    }
                 </script>
 
             </div>
