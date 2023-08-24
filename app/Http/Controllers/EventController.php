@@ -81,6 +81,7 @@ class EventController extends Controller
         // dd($tes);
         return redirect()->route('events_index', $event->slug);
     }
+
     public function show($slug)
     {
         $user = User::find(auth()->user()->id);
@@ -91,7 +92,9 @@ class EventController extends Controller
         $carbon = new Carbon();
         return view('events.edit', compact(['events','current_event','sidebar_activation', 'carbon']));
     }
-    public function update(Request $request){
+
+    public function update(Request $request)
+    {
         // dd($request->start_date);
         $request->validate([
             'name' => 'required',
@@ -108,6 +111,10 @@ class EventController extends Controller
         $updated->start_date = Carbon::parse($request->start_date);
         $updated->save();
         return redirect('/events/' . $request->slug)->with('success', 'Event edited successfully!');
+        
+    }
+
+    public function destroy(){
         
     }
 

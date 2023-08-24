@@ -19,7 +19,10 @@
             {{-- {{ dd("/events/".$current_event->id."/add") }} --}}
             {{ csrf_field() }}
             <div class="m-4">
-                <h4 class="centurygothic-bold">Add Event</h4>
+                <div class="card-header p-0 d-flex justify-content-between">
+                    <h4 class="centurygothic-bold">Add Event</h4>
+                    <a class="text-danger centurygothic-bold" href="">Delete Event</a>
+                </div>
 
                 <div class="row mb-1">
                     <div class="col-md">

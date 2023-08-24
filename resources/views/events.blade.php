@@ -12,7 +12,7 @@
 
         <div class="p-2 pt-0 ps-1 d-flex justify-content-between">
             <h3 class="mb-1 centurygothic-bold">Event Details</h3>
-            <a href="/events/{{ $current_event->slug }}/edit" class="d-flex align-items-end">Edit Event</a>
+            <a href="/events/{{ $current_event->slug }}/edit" class="centurygothic-bold d-flex align-items-end">Edit Event</a>
         </div>
         <div class="card w-100">
             <div class="card-body py-3">
