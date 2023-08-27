@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth']], function () {
     // Events
     Route::get('/', [EventController::class, 'dashboard']);
     Route::get('/events', [EventController::class, 'dashboard']);
+    Route::get('/dashboard', [EventController::class, 'dashboard']);
     Route::get('/events/{slug}', [EventController::class, 'index'])->name('events_index');
 
     // Events - Fetch slugs

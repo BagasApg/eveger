@@ -41,16 +41,21 @@
         </nav> --}}
             <nav class="navbar navbar-expand-lg bg-body-tertiary py-2 bg-white">
                 <div class="container-fluid ps-2 px-1 d-flex flex-row justify-content-between">
-                    <a class="navbar-brand p-0 fs-3 text-black centurygothic-bold" href="/">ev<span
+                    <a class="navbar-brand p-0 fs-3 text-black centurygothic-bold" href="/dashboard">ev<span
                             style="color: rgb(239, 90, 74)">e</span>ger</a>
                     <div class="" id="navbarNavDropdown">
                         <div class="dropdown">
-                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            <a class="profile-menu nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Welcome, {{ auth()->user()->username }}!
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a href="/logout" class="dropdown-item">Logout</a></li>
+                                <li><a href="/logout" class="dropdown-item">
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <i style="widht:14px; height:14px" data-feather="log-out"></i>
+                                        Logout
+                                    </div>
+                                </a></li>
 
                             </ul>
                         </div>
@@ -108,21 +113,30 @@
 
                                 </a>
                                 <div data-bs-toggle="dropdown" aria-expanded="false"
-                                    style="width:24px; height:24px; z-index: 100000; right:10px; top: 10px"
-                                    class="event-options d-flex justify-content-center align-items-center position-absolute">
+                                    class="event-options d-flex justify-content-center align-items-center text-center position-absolute {{ request()->is('events/' . $event->slug . $sidebar_activation) ? '' : 'd-none' }}">
 
                                     <i style="width:18px; height:18px;" data-feather="more-vertical"></i>
                                 </div>
 
                                 <div class="dropdown-menu dropdown-menu-end">
 
-                                    <a class="dropdown-item" href="/events/{{ $event->slug }}/edit">Edit</a>
+                                    <a class="dropdown-item" href="/events/{{ $event->slug }}/edit">
+                                        <div class="d-flex gap-2 align-items-center">
+                                            <i style="widht:18px; height:18px" data-feather="edit"></i>
+                                            <span>Edit</span>
+                                        </div>
+                                    </a>
                                     <form id="delete-form" action="" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button
                                             onclick="deleteEvent('/events/{{ $event->slug }}/delete', '{{ $event->name }}')"
-                                            type="button" class="dropdown-item">Delete</button>
+                                            type="button" class="dropdown-item">
+                                            <div class="d-flex gap-2 align-items-center">
+                                                <i style="widht:18px; height:18px" data-feather="trash-2"></i>
+                                                Delete
+                                            </div>
+                                        </button>
                                     </form>
                                 </div>
                             </div>
