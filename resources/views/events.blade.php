@@ -12,7 +12,6 @@
 
         <div class="p-2 pt-0 ps-1 d-flex justify-content-between">
             <h3 class="mb-1 centurygothic-bold">Event Details</h3>
-            <a href="/events/{{ $current_event->slug }}/edit" class="centurygothic-bold d-flex align-items-end">Edit Event</a>
         </div>
         <div class="card w-100">
             <div class="card-body py-3">
@@ -32,7 +31,7 @@
                     <h4 class="mb-1">{{ $attendee->name }}</h4>
                     <h5 class="fw-normal">{{ $attendee->role }}</h5>
                 @endforeach --}}
-        
+
         <div class="card w-100">
             <div class="card-body mt-0">
                 <div class="attendees-table-header pb-3">
@@ -81,7 +80,7 @@
                                                 <input type="hidden" name="event_id" value="{{ $current_event->id }}">
 
                                                 <button type="button" id="delete_attendee"
-                                                    onclick="deleteAttend('/events/{{ $current_event->slug }}/delete/{{ $attendee->id }}')"
+                                                    onclick="deleteAttend('/events/{{ $current_event->slug }}/delete/{{ $attendee->id }}', '{{ $attendee->name }}')"
                                                     class="p-0" style="border: none; background-color: white">
                                                     @csrf
                                                     @method('DELETE')
@@ -110,11 +109,11 @@
                     </script> --}}
                 @endif
                 <script>
-                    function deleteAttend(url) {
+                    function deleteAttend(url, attendeeName) {
                         $(document).ready(function() {
                             Swal.fire({
-                                title: 'Are you sure?',
-                                text: "You won't be able to revert this!",
+                                title: 'Are you sure',
+                                text: "This action is irreversible. Continue?",
                                 icon: 'warning',
                                 showCancelButton: true,
                                 confirmButtonColor: '#3085d6',
@@ -124,11 +123,13 @@
                                 if (result.isConfirmed) {
                                     Swal.fire(
                                         'Deleted!',
-                                        'Your file has been deleted.',
+                                        'Attendee "' + attendeeName + '" deleted!',
                                         'success'
-                                    )
-                                    $("#delete-form").attr('action', url);
-                                    $('#delete-form').submit();
+                                    ).then(() => {
+                                        $("#delete-form").attr('action', url);
+                                        $('#delete-form').submit();
+
+                                    })
                                 }
                             })
                         });

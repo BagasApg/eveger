@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('topic')->nullable();
             $table->string('creator');
             $table->date('start_date');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->timestamps();
         });

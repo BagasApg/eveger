@@ -26,11 +26,11 @@ class DatabaseSeeder extends Seeder
         $users = [
             [
                 'username' => 'myadmin',
-                'password' => 'asdasd'
+                'password' => 'asdasdasd'
             ], 
             [
                 'username' => 'bagasapg',
-                'password' => 'asdasd'
+                'password' => 'asdasdasd'
             ]
         ];
 

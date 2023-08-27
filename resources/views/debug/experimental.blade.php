@@ -15,113 +15,21 @@
 </head>
 
 <body>
-    @php
-        $produks = [['name' => 'Kentang', 'price' => 10000], ['name' => 'Ayam', 'price' => 20000], ['name' => 'Ikan', 'price' => 30000]];
-    @endphp
+    <div class="p-5">
 
-
-
-    <div class="container p-5">
-
-        <div class="card">
-            <div class="card-header">
-                Tes
-            </div>
-            <div id="rincian" class="card-body p-3">
-                {{-- <div class="d-flex justify-content-between">
-
-                    <p class="m-0">1. Kentang Korenk <span class="fw-bold">* 2</span></p>
-                    <p class="m-0">Rp20.000</p>
-                </div> --}}
-            </div>
-        </div>
-        @foreach ($produks as $produk)
-            {{-- <p>{{ $produk['name'] }}</p> --}}
-            <div class="btn btn-primary mt-2" onclick="add('{{ $produk['name'] }}', {{ $produk['price'] }})">Add
-                {{ $produk['name'] }}</div>
-        @endforeach
-        <div class="inputhere">
-
-        </div>
-
-
-
+        <input type="text" readonly value="25000" id="total-input">
+        <input type="text" id="bayar-input">
+        <input type="text" id="kembalian-input">
     </div>
-    <script>
-        $(document).ready(function() {
-            $('.inputhere').html(`
-                <input type="number" name="total" id="total" min="1" data-inputid="1">
-            
-            `); 
-        });
-
-        $('#total').change(function(e) {
-            e.preventDefault();
-            console.log($(this).attr('data-inputid'))
-        });
-
-        var array_produk = []
-
-        function add(id, name, price) {
-            array_produk.push({
-                'id': id,
-                'name': name,
-                'price': price
-            })
-            let divs = ''
-            console.log(array_produk)
-            $.each(array_produk, function(index, val) {
-                // console.log(val.name + ' ' + val.price)
-                divs += `<div class="d-flex justify-content-between">
-                             <p class="m-0">${(index+1)} ${val.name} <span class="fw-bold">* 2</span></p>
-                             <p class="m-0">Rp${val.price}</p>
-                         </div>`
-            });
-            $('#delete_produk_' + id).toggleClass('d-none');
-            $('#add_produk_' + id).toggleClass('d-none');
-            $('#rincian').html(divs);
-        }
-
-        function del(id, name, price) {
-            console.log(id)
-            var index = id - 1
-            array_produk.splice(array_produk.indexOf(id), 1)
-            let divs = ''
-            console.log(array_produk);
-            $.each(array_produk, function(index, val) {
-                console.log(val.name + ' ' + val.price)
-                divs += `<div class="d-flex justify-content-between">
-                             <p class="m-0">${(index+1)} ${val.name} <span class="fw-bold">* 2</span></p>
-                             <p class="m-0">Rp${val.price}</p>
-                         </div>`
-            });
-            $('#delete_produk_' + id).toggleClass('d-none');
-            $('#add_produk_' + id).toggleClass('d-none');
-            $('#rincian').html(divs);
-            console.log(array_produk);
-        }
-    </script>
-
-
-    {{-- <div class="p-3">
-        <div id="add" class="btn btn-primary">Add</div>
-    </div>
-
-    <script>
-      $('#add').click(function (e) { 
-        e.preventDefault();
-        $(this).toggleClass('btn-primary')
-        $(this).toggleClass('btn-warning')
-        $(this).attr('id', '#del');
-      });
-
-      $('#del').click(function (e) { 
-        e.preventDefault();
-        $(this).toggleClass('btn-primary')
-        $(this).toggleClass('btn-warning')
-        $(this).attr('id', '#add');
-      });
-    </script> --}}
 </body>
 
+
+<script>
+    $('#bayar-input').on('input', function () {
+        var total = $('#total-input').val();
+        var bayar = this.value;
+        var kembalian = bayar - total;
+        console.log(kembalian);
+    });
+</script>
 </html>

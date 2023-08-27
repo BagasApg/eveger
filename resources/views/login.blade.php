@@ -92,39 +92,50 @@
               <form id="formAuthentication" class="mb-3" action="{{ route('login_authenticate') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                  <label for="username" class="form-label">Username</label>
+                  <div class="d-flex justify-content-start gap-1">
+
+                    <label for="username" class="form-label @error('username')
+                      text-error @enderror @if (Session::has('login_error')) text-error @endif">Username</label>
+                  @error('username')
+    <div class="text-error fst-italic">{{ $message }}</div>
+@enderror
+                  @if (Session::has('login_error'))
+<div class="text-error fst-italic"> - Login or password is invalid</div>
+@endif
+                </div>
                   <input
                     type="text"
-                    class="form-control @error('username') is-invalid @enderror"
+                    class="form-control @error('username') is-invalid @enderror @if (Session::has('login_error')) is-invalid @endif"
                     id="username"
                     name="username"
                     placeholder="Enter your username"
                     autofocus
                   />
-                  @error('username')
-    <div class="invalid-feedback">{{ $message }}</div>
-@enderror
+                  
                 </div>
+                
                 <div class="mb-3 form-password-toggle">
-                  <div class="d-flex justify-content-between">
-                    <label class="form-label" for="password">Password</label>
-                    
+                  <div class="d-flex justify-content-start gap-1">
+                    <label class="form-label @error('password')
+                      text-error @enderror @if (Session::has('login_error')) text-error @endif" for="password">Password</label>
+                    @error('password')
+    <div class="text-error fst-italic"> - {{ $message }}</div>
+@enderror
+                    @if (Session::has('login_error'))
+<div class="text-error fst-italic"> - Login or password is invalid</div>
+@endif
                   </div>
                   <div class="input-group input-group-merge">
                     <input
                       type="password"
                       id="password"
-                      class="form-control @error('username') is-invalid @enderror"
+                      class="form-control @error('password') is-invalid @enderror @if (Session::has('login_error')) is-invalid @endif"
                       name="password"
                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                       aria-describedby="password"
                     />
                     <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                    @error('password')
-                  <div class="invalid-feedback">
-                                                                                            {{ $message }}
-                                                                                          </div>
-@enderror
+                    
                   </div>
                 </div>
                 <div class="mb-3">

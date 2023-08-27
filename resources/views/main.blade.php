@@ -97,7 +97,7 @@
 
                                         </div>
 
-                                        <p class="">{{ $event->creator }}</p>
+                                        <p style="color: rgb(37, 37, 37) !important">{{ $event->creator }}</p>
                                     </div>
 
                                     <div class="event-time">
@@ -107,16 +107,22 @@
                                     </div>
 
                                 </a>
-                                <i data-bs-toggle="dropdown" aria-expanded="false" data-feather="more-vertical"
-                                    style="width:18px; height:18px; z-index: 100000; right:10; top: 7"
-                                    class="event-options mt-2 position-absolute {{ request()->is('events/' . $event->slug . $sidebar_activation) ? '' : 'd-none' }}"></i>
+                                <div data-bs-toggle="dropdown" aria-expanded="false"
+                                    style="width:24px; height:24px; z-index: 100000; right:10px; top: 10px"
+                                    class="event-options d-flex justify-content-center align-items-center position-absolute">
+
+                                    <i style="width:18px; height:18px;" data-feather="more-vertical"></i>
+                                </div>
+
                                 <div class="dropdown-menu dropdown-menu-end">
 
                                     <a class="dropdown-item" href="/events/{{ $event->slug }}/edit">Edit</a>
-                                    <form action="/events/{{ $event->slug }}/delete" method="POST">
+                                    <form id="delete-form" action="" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <a type="submit" class="dropdown-item">Delete</a>
+                                        <button
+                                            onclick="deleteEvent('/events/{{ $event->slug }}/delete', '{{ $event->name }}')"
+                                            type="button" class="dropdown-item">Delete</button>
                                     </form>
                                 </div>
                             </div>
@@ -152,6 +158,33 @@
                     $('.scrollbar-attendees').removeClass('active-scrollbar');
                 });
             });
+
+            function deleteEvent(url, eventName) {
+                $(document).ready(function() {
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "This action is irreversible. Continue?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Event "' + eventName + '" successfully deleted!',
+                                'success'
+                            ).then(() => {
+                                $("#delete-form").attr('action', url);
+                                $('#delete-form').submit();
+
+                            })
+                        }
+                    })
+                });
+            }
+
             feather.replace();
 
 

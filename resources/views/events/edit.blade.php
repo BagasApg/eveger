@@ -21,7 +21,6 @@
             <div class="m-4">
                 <div class="card-header p-0 d-flex justify-content-between">
                     <h4 class="centurygothic-bold">Add Event</h4>
-                    <a class="text-danger centurygothic-bold" href="">Delete Event</a>
                 </div>
 
                 <div class="row mb-1">
@@ -74,8 +73,8 @@
                         <div>
                             <label for="exampleFormControlTextarea1" class="centurygothic-bold form-label"
                                 style="letter-spacing: 0.5px">Event Topic</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-                                placeholder="{{ $current_event->topic }}" name="topic">{{ $current_event->creator }}</textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="{{ $current_event->topic }}"
+                                name="topic">{{ $current_event->topic }}</textarea>
                         </div>
 
                     </div>
@@ -87,8 +86,9 @@
                             <label for="defaultFormControlInput" class="form-label centurygothic-bold"
                                 style="letter-spacing: 0.5px"> Start Date</label>
                             <input type="text" class="form-control" id="defaultFormControlInput" placeholder="John Doe"
-                                aria-describedby="defaultFormControlHelp" name="start_date" value="{{ $carbon::parse($current_event->start_date)->format('m/d/Y') }}"/>
-                                
+                                aria-describedby="defaultFormControlHelp" name="start_date"
+                                value="{{ $carbon::parse($current_event->start_date)->format('m/d/Y') }}" />
+
                             <div id="defaultFormControlHelp" class="form-text">
                             </div>
                             <input type="hidden" name="id" value="{{ $current_event->id }}">
@@ -105,6 +105,32 @@
             </div>
         </form>
         <script>
+            function deleteEvent(url, eventName) {
+                $(document).ready(function() {
+                    Swal.fire({
+                        title: 'Are you sure?',
+                        text: "This action is irreversible. Continue?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Event "' + eventName + '" successfully deleted!',
+                                'success'
+                            ).then(() => {
+                                $("#delete-form").attr('action', url);
+                                $('#delete-form').submit();
+
+                            })
+                        }
+                    })
+                });
+            }
+
             $(function() {
                 $('input[name="start_date"]').daterangepicker({
                     singleDatePicker: true,

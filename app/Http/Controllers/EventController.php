@@ -111,14 +111,14 @@ class EventController extends Controller
         $updated->start_date = Carbon::parse($request->start_date);
         $updated->save();
         return redirect('/events/' . $request->slug)->with('success', 'Event edited successfully!');
-        
+
     }
 
     public function destroy($slug){
-        dd('masuk!');
-        Event::where('slug', $slug)->delete();
+        $event = Event::where('slug', $slug)->first();
+        Event::where('slug', $slug)->first()->delete();
 
-        return redirect('/events/')->with('success', "Event deleted!");
+        return redirect('/events/')->with('success', 'Event '. $event->name .' deleted!');
     }
 
     public function checkSlug(Request $request)
