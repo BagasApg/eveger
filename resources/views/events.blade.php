@@ -32,6 +32,7 @@
                     <h4 class="mb-1">{{ $attendee->name }}</h4>
                     <h5 class="fw-normal">{{ $attendee->role }}</h5>
                 @endforeach --}}
+        
         <div class="card w-100">
             <div class="card-body mt-0">
                 <div class="attendees-table-header pb-3">
@@ -76,12 +77,11 @@
                                                     <i style="width:    18px; height:18px"data-feather="edit"></i>
                                                 </div>
                                             </a>
-                                            <form id="delete-form"
-                                                action=""
-                                                method="POST">
+                                            <form id="delete-form" action="" method="POST">
                                                 <input type="hidden" name="event_id" value="{{ $current_event->id }}">
 
-                                                <button type="button" id="delete_attendee" onclick="deleteAttend('/events/{{ $current_event->slug }}/delete/{{ $attendee->id }}')"
+                                                <button type="button" id="delete_attendee"
+                                                    onclick="deleteAttend('/events/{{ $current_event->slug }}/delete/{{ $attendee->id }}')"
                                                     class="p-0" style="border: none; background-color: white">
                                                     @csrf
                                                     @method('DELETE')

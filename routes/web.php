@@ -44,6 +44,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/events/{slug}/edit', [EventController::class, 'show']);
     Route::post('/events/{slug}/edit', [EventController::class, 'update']);
 
+    Route::delete('events/{slug}/delete', [EventController::class, 'destroy']);
     // Attendees
 
     Route::get('/events/{slug}/add', [AttendeeController::class, 'create']);

@@ -114,8 +114,11 @@ class EventController extends Controller
         
     }
 
-    public function destroy(){
-        
+    public function destroy($slug){
+        dd('masuk!');
+        Event::where('slug', $slug)->delete();
+
+        return redirect('/events/')->with('success', "Event deleted!");
     }
 
     public function checkSlug(Request $request)

@@ -59,7 +59,7 @@
             </nav>
         </div>
         <div class="row-bawah d-flex">
-            <div class=" bg-white shadow-sm events-sidebar"
+            <div class=" bg-white shadow-sm events-sidebar sticky-top"
                 style="width:25vw;margin-top: 1px; height: 91vh; border-radius: 0 0 0.5rem">
                 <div
                     class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom sticky-top justify-content-between">
@@ -77,30 +77,49 @@
                         </a>
                     </div>
                 </div>
-                <div class="d-flex flex-column align-items-stretch flex-shrink-0 border-bottom bg-white scrollbar scrollbar-events"
+                <div class="d-flex flex-column align-items-stretch flex-shrink-0 border-bottom bg-white scrollbar scrollbar-events sticky-top"
                     style="height:61.25vh; overflow-y: auto; overflow-x:hidden;">
 
                     <div class="list-group list-group-flush border-bottom scrollarea">
                         @foreach ($events as $event)
-                            <a href="/events/{{ $event->slug }}"
-                                class=" list-group-item list-group-item-action py-3 ps-4 pb-2 lh-tight {{ request()->is('events/' . $event->slug . $sidebar_activation) ? 'my-active' : '' }}"
-                                aria-current="true">
-                                <div class="{{ request()->is('events/' . $event->slug . $sidebar_activation) ? 'active-block' : '' }}"
-                                    style=""></div>
-                                <div class="event-detail">
-                                    <div class="d-flex flex-column">
-                                        <p class="h5 m-0 centurygothic-bold" style="color: rgb(37, 37, 37) !important">
-                                            {{ $event->name }}</p>
+                            <div
+                                class="event-bar d-flex flex-row list-group-item list-group-item-action lh-tight border-end-0 p-0 position-relative {{ request()->is('events/' . $event->slug . $sidebar_activation) ? 'my-active' : '' }}">
+
+                                <a href="/events/{{ $event->slug }}" class="flex-fill  py-3 ps-4 pb-2"
+                                    aria-current="true">
+                                    <div class="{{ request()->is('events/' . $event->slug . $sidebar_activation) ? 'active-block' : '' }}"
+                                        style=""></div>
+                                    <div class="event-detail d-flex flex-column">
+                                        <div class="d-flex flex-row justify-content-between">
+                                            <p class="h5 m-0 centurygothic-bold"
+                                                style="color: rgb(37, 37, 37) !important">
+                                                {{ $event->name }}</p>
+
+                                        </div>
+
                                         <p class="">{{ $event->creator }}</p>
                                     </div>
-                                </div>
 
-                                <div class="event-time">
+                                    <div class="event-time">
 
-                                    <div class="col-10 mb-1" style="color: rgb(102, 102, 102) !important">
-                                        {{ $carbon::parse($event->start_date)->format('jS F, Y') }}</div>
+                                        <div class="col-10 mb-1" style="color: rgb(102, 102, 102) !important">
+                                            {{ $carbon::parse($event->start_date)->format('jS F, Y') }}</div>
+                                    </div>
+
+                                </a>
+                                <i data-bs-toggle="dropdown" aria-expanded="false" data-feather="more-vertical"
+                                    style="width:18px; height:18px; z-index: 100000; right:10; top: 7"
+                                    class="event-options mt-2 position-absolute {{ request()->is('events/' . $event->slug . $sidebar_activation) ? '' : 'd-none' }}"></i>
+                                <div class="dropdown-menu dropdown-menu-end">
+
+                                    <a class="dropdown-item" href="/events/{{ $event->slug }}/edit">Edit</a>
+                                    <form action="/events/{{ $event->slug }}/delete" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a type="submit" class="dropdown-item">Delete</a>
+                                    </form>
                                 </div>
-                            </a>
+                            </div>
                         @endforeach
                     </div>
                 </div>
@@ -142,7 +161,6 @@
             //         toastBootstrap.show()
             //     })
             // }
-            
         </script>
     </body>
 
