@@ -73,7 +73,7 @@
 
                     </div>
                     <div class="d-flex align-items-center m-0 p-0">
-                        <a href="/add">
+                        <a href="/add" title="Add Event">
                             <div class="p-1 rounded add-event-button d-flex align-items-center gap-2 "
                                 style="font-size: 16px">
 
@@ -83,7 +83,7 @@
                     </div>
                 </div>
                 <div class="d-flex flex-column align-items-stretch flex-shrink-0 border-bottom bg-white scrollbar scrollbar-events sticky-top"
-                    style="height:61.25vh; overflow-y: auto; overflow-x:hidden;">
+                    style="height:67.3vh; overflow-y: auto; overflow-x:hidden;">
 
                     <div class="list-group list-group-flush border-bottom scrollarea">
                         @foreach ($events as $event)

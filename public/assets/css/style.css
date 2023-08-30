@@ -45,6 +45,7 @@ body {
     transition: all 0.2s ease-in-out;
 }
 .upcoming-event:hover {
+    background-color: rgb(255, 226, 223);
     transform: translateY(-2px);
 }
 

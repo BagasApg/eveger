@@ -46,29 +46,32 @@
                     </div>
                     <div class="card-body centurygothic fs-5">
                         <div class="attendees-table-body scrollbar scrollbar-attendees pt-2"
-                            style="height: 38vh;overflow-y: auto; overflow-x:hidden;">
+                            style="height: 43vh;overflow-y: auto; overflow-x:hidden; ">
                             @foreach ($upcoming_events as $upcoming_event)
-                                <div class="upcoming-event d-flex justify-content-between p-3 mb-3">
-                                    <div class="detail-names">
-                                        <div class="pb-2">
-                                            <p class="m-0 fw-bold text-black">{{ $upcoming_event->name }}</p>
+                                <a href="/events/{{ $upcoming_event->slug }}">
+                                    <div class="upcoming-event d-flex justify-content-between p-3 mb-3 sneat-black">
+                                        <div class="detail-names d-flex flex-column justify-content-start">
+                                            <div class="">
+                                                <p class="m-0 fs-6 fw-bold text-black">{{ $upcoming_event->name }}</p>
+
+                                            </div>
+                                            <div class="">
+                                                <p class="m-0 fs-6">{{ $upcoming_event->creator }}</p>
+
+                                            </div>
 
                                         </div>
-                                        <div class="">
-                                            <p class="m-0">{{ $upcoming_event->creator }}</p>
+                                        <div class="detail-date">
+                                            <div class="">
+
+                                                <p class="fs-6">
+                                                    {{ $carbon::parse($upcoming_event->start_date)->format('jS F, Y') }}</p>
+
+                                            </div>
 
                                         </div>
-
                                     </div>
-                                    <div class="detail-date">
-                                        <div class="">
-
-                                            <p>{{ $upcoming_event->start_date }}</p>
-
-                                        </div>
-
-                                    </div>
-                                </div>
+                                </a>
                             @endforeach
                         </div>
                     </div>

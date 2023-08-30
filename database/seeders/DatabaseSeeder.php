@@ -41,24 +41,24 @@ class DatabaseSeeder extends Seeder
                 'user_id' => 1,
                 'name' => "Rapat 1",
                 'slug' => "rapat-1",
-                'topic' => "rapat 1",
-                'creator' => "Jul",
+                'topic' => "Pembahasan mengenai rapat 1 dengan bahasan rapat 1",
+                'creator' => "Bagas Arianto",
                 'start_date' => Carbon::yesterday()
             ],
             [
                 'user_id' => 1,
                 'name' => "Rapat 2",
                 'slug' => "rapat-2",
-                'topic' => "rapat 2",
-                'creator' => "Jul",
+                'topic' => "Pembahasan mengenai rapat 2 dengan bahasan rapat 2",
+                'creator' => "Erlangga Arya",
                 'start_date' => Carbon::tomorrow()
             ],
             [
                 'user_id' => 1,
                 'name' => "Rapat 3",
                 'slug' => "rapat-3",
-                'topic' => "rapat 3",
-                'creator' => "Jul",
+                'topic' => "Pembahasan mengenai rapat 3 dengan bahasan rapat 3",
+                'creator' => "Hafiz Achmad",
                 'start_date' => Carbon::now()
             ]
             ];
