@@ -33,10 +33,18 @@ class EventController extends Controller
         $user = User::find(auth()->user()->id);
 
         $events = Event::where('user_id', $user->id)->get();
+        $upcoming_events = Event::where('user_id', $user->id)->whereDate('start_date', '>=', Carbon::now())->orderBy('start_date', 'desc')->take(3)->get();
+        $attendees = Attendee::whereHas('event', function($query) use($user){
+            $query->where('user_id', $user->id);
+        })->get();
+        // dd($attendees);
+        // dd($upcoming_events);
+        $ongoing_events = Event::where('user_id', $user->id)->whereDay('start_date', Carbon::today())->get();
+        
         $sidebar_activation = '/';
 
         $carbon = new Carbon();
-        return view('dashboard', compact(['events','sidebar_activation', 'carbon']));
+        return view('dashboard', compact(['events','sidebar_activation', 'carbon', 'upcoming_events','ongoing_events']));
     }
 
     public function create()

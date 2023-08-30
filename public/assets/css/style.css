@@ -36,6 +36,18 @@ body {
 
 /* VV Selfmade Styles VV */
 
+/* dashboard */
+.upcoming-event {
+    /* border-top: solid 1px salmon;
+    border-bottom: solid 1px salmon; */
+    box-shadow: 0px 0px 2px 0px rgba(250,128,114,0.75);
+    border: 1px solid #e3e3e3;
+    transition: all 0.2s ease-in-out;
+}
+.upcoming-event:hover {
+    transform: translateY(-2px);
+}
+
 .profile-menu:hover {
     color: rgb(36, 36, 36) !important;
 }

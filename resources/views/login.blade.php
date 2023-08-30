@@ -97,7 +97,7 @@
                     <label for="username" class="form-label @error('username')
                       text-error @enderror @if (Session::has('login_error')) text-error @endif">Username</label>
                   @error('username')
-    <div class="text-error fst-italic">{{ $message }}</div>
+    <div class="text-error fst-italic"> - {{ $message }}</div>
 @enderror
                   @if (Session::has('login_error'))
 <div class="text-error fst-italic"> - Login or password is invalid</div>
@@ -109,6 +109,7 @@
                     id="username"
                     name="username"
                     placeholder="Enter your username"
+                    value="{{ old('username') }}"
                     autofocus
                   />
                   
